@@ -13,39 +13,64 @@ rather than the developer, which makes the code easier to maintain.
 - > IoC new objects in containers, so that you don't have to new them in your class.
 #### IoC Container
 - Spring provides an IoC container that implements the idea of IoC.
-#### Bean
-- Objects that created and controlled in the IoC container are called Bean.
-#### DI (Dependency Injection)
-- This design pattern allows fot the automatic injection of dependencies into objects.
-- > If one class depends on another one, IoC binds and loads them together.
-#### Getting Started Case
+- > Spring uses .xml to set beans to implement IoC.
 - **Case 1: Using XML file to implement IoC**.
   1. Configure [xml file](../src/main/resources/applicationContext.xml)
   2. Use `property` label to set the all referenced objects.
   3. Get container and create bean in [app.java](../src/main/java/org/tenphun/ioccase1/App2.java)
-- > Now we know Spring uses .xml to set beans to implement IoC.
-- `<bean></bean>` is the tag pair to define a bean. 
-e.g. `bean id="bookDao" name = "dao dao1" class="BookDaoImpl" scope="prototype"/>`
+#### Bean
+- Objects that created and controlled in the IoC container are called Bean.
+- `<bean></bean>` is the tag pair to define a bean.
+  e.g. `bean id="bookDao" name = "dao dao1" class="BookDaoImpl"/>`
 - `id` sets only identify name for the bean, while `name` sets nicknames for the bean. (Which are used in `getBean()`)
 - `scope` decides whether single instance or multiple instances. e.g. Two objects created by `getBean()` are different if `scope="prototype"`
- 
+- `init-method` and : Call lined method on creation of the bean.
+- `destroy-method`: Call linked method on the destruction. Need to call `ctx.close()` or `ctx.registerShutdownHoot()`
+- > Life-cycle control methods can be also set by implementing interfaces `InitializingBean` and `DisposableBean`
 - **Case 2: Three types of instantiate bean**
   1. Use Constructor of the class
   ```xml
-    <bean id="id" class="class"/>
+  <bean id="bookDao" class="BookDao"/>
   ```
-  2. Use static factory
+  2. Use static factory (See [BookDaoFactory](../src/main/java/org/tenphun/ioccase1/dao/BookDaoFactory.java))
   ```xml
-    <bean id="id" class="factoryClass" factory-method="method of factory class that create the object"/>
+  <bean id="bookDao" class="BookDaoFactory" factory-method="getBookDao"/>
   ```
   3. Use instance factory
   ```xml
-    <beans>
-        <bean id="factoryId" class="factoryClass"/>
-        <bean id="id" factory-method="method of factory class that create the object" factory-bean="factoryId"/>
-    </beans>
+  <beans>
+  <bean id="bookDaoFactory" class="BookDaoFactory"/>
+  <bean id="bookDao" factory-method="getBookDao" factory-bean="bookDaoFactory"/>
+  </beans>
   ```
-  for this type, Spring improved it so that it can be generalized. TODO: last log here.
+- > For the 3rd type, Spring improved it by setting [FactoryBean](../src/main/java/org/tenphun/ioccase1/dao/BookDaoFactoryBean.java) so that it can be more generalized.
+#### DI (Dependency Injection)
+- This design pattern allows fot the automatic injection of dependencies into objects.
+- > If one class depends on another one, IoC binds and loads them together.
+- Different DI methods:
+  - setter 
+    - for simple types (int, String...)
+      1. Provide setter method
+      2. in `<property>` set `name` and `value`
+    - for reference types
+      1. Provide setter method
+      2. in `<property>` set `name` and `ref`
+  - Constructor
+    - for simple types
+      1. Provide Constructor method
+      2. in `<constructor-arg>` set `name` and `value`
+    - for reference types
+      1. Provide Constructor method
+      2. in `<constructor-arg>` set `name` and `ref`
+  - Autowire
+    1. Provide setter method
+    2. in `<bean>` set `autowire = bytype or byName`
+> Now we can easily set up a bean of a class, even from 3rd-party. E.g. Connecting database. 
+> We can also use a better way: load properties file.
+
+#### Use Annotation to develop
+1. Edit [.xml](../src/main/resources/annotationApplicationContext.xml)
+2. Use [Annotation](../src/main/java/org/tenphun/ioccase2/service/BookServiceImpl.java) to set beans
 #### Some common Exception
 - `NoSuchBeanDefinitionException`: Spring is unable to find a bean definition for a specified bean name or class;
 - `BeanCreationExcpetion`: Spring is unable to create a bean. Check the no-para constructor of the class.
