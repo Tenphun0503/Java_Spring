@@ -6,14 +6,17 @@
 package org.tenphun.ioccase1.service;
 
 import org.tenphun.ioccase1.dao.BookDao;
-import org.tenphun.ioccase1.dao.BookDaoImpl;
 
 public class BookServiceImpl implements BookService {
-    // 4. Delete
-    private BookDao bookDao = new BookDaoImpl();
+    // 4. Delete objects created with 'new'.
+    private BookDao bookDao;
 
     public void save() {
         System.out.println("book service save ...");
         bookDao.save();
+    }
+    // 5. Provide a setter.
+    public void setBookDao(BookDao bookDao) {
+        this.bookDao = bookDao;
     }
 }

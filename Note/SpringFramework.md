@@ -19,12 +19,36 @@ rather than the developer, which makes the code easier to maintain.
 - This design pattern allows fot the automatic injection of dependencies into objects.
 - > If one class depends on another one, IoC binds and loads them together.
 #### Getting Started Case
-- Case 1: Using XML file to implement IoC.
+- **Case 1: Using XML file to implement IoC**.
   1. Configure [xml file](../src/main/resources/applicationContext.xml)
-  2. Get container and create bean in [app.java](../src/main/java/org/tenphun/ioccase1/App2.java)
-
-
-
+  2. Use `property` label to set the all referenced objects.
+  3. Get container and create bean in [app.java](../src/main/java/org/tenphun/ioccase1/App2.java)
+- > Now we know Spring uses .xml to set beans to implement IoC.
+- `<bean></bean>` is the tag pair to define a bean. 
+e.g. `bean id="bookDao" name = "dao dao1" class="BookDaoImpl" scope="prototype"/>`
+- `id` sets only identify name for the bean, while `name` sets nicknames for the bean. (Which are used in `getBean()`)
+- `scope` decides whether single instance or multiple instances. e.g. Two objects created by `getBean()` are different if `scope="prototype"`
+ 
+- **Case 2: Three types of instantiate bean**
+  1. Use Constructor of the class
+  ```xml
+    <bean id="id" class="class"/>
+  ```
+  2. Use static factory
+  ```xml
+    <bean id="id" class="factoryClass" factory-method="method of factory class that create the object"/>
+  ```
+  3. Use instance factory
+  ```xml
+    <beans>
+        <bean id="factoryId" class="factoryClass"/>
+        <bean id="id" factory-method="method of factory class that create the object" factory-bean="factoryId"/>
+    </beans>
+  ```
+  for this type, Spring improved it so that it can be generalized. TODO: last log here.
+#### Some common Exception
+- `NoSuchBeanDefinitionException`: Spring is unable to find a bean definition for a specified bean name or class;
+- `BeanCreationExcpetion`: Spring is unable to create a bean. Check the no-para constructor of the class.
 
 ### 2. Basic Operation
 
