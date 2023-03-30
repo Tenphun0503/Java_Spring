@@ -9,4 +9,6 @@
         <!-- 6. Set the relation between Dao and Service-->
         <property name="bookDao" ref="bookDao"/>
     </bean>
+
+    <bean id="bookDaoByFactory" class="org.tenphun.ioccase1.dao.BookDaoFactoryBean"/>
 </beans>
