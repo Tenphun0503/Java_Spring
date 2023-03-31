@@ -74,9 +74,8 @@ rather than the developer, which makes the code easier to maintain.
 3. Use [Config](../src/main/java/org/tenphun/ioccase2/config/SpringConfig.java) class to replace xml setting file.
 4. In [dependent class](../src/main/java/org/tenphun/ioccase2/service/BookServiceImpl.java), use `@Autowired` to DI. 
 5. For simple types injection, we use `@Value("value")`. We can also set `@PropertySource` in config class to load properties file
-- > With `@Autowired`, we no longer need setter method.   
-  > If we have multiple implement classes, we use `@Qualifier("name")` to set name.  
-
+- > With `@Autowired`, we no longer need setter method. If we have multiple implement classes, we use `@Qualifier("name")` to set name.  
+- > With `@Import` in SpringConfig, we can load other config class.
 #### Some common Exception
 - `NoSuchBeanDefinitionException`: Spring is unable to find a bean definition for a specified bean name or class;
 - `BeanCreationExcpetion`: Spring is unable to create a bean. Check the no-para constructor of the class.
