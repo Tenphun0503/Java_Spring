@@ -83,7 +83,14 @@ rather than the developer, which makes the code easier to maintain.
 ### 2. Basic Operation
 #### Mybatis
 1. See a [Mybatis sample](../spring_mybatis), which works without Spring
-2. 
+2. Now we combine myBatis and Spring together
+   1. Add relevant [dependencies](../spring_mybatis2/pom.xml)
+   2. Convert SqlMapConfig.xml to config class: [MybatisConfig](../spring_mybatis2/src/main/java/mybatis/config/MybatisConfig.java),
+   Set `typeAliases`, `dataSource` and `mapper` 
+   3. For `dataSource`, set [JdbcConfig](../spring_mybatis2/src/main/java/mybatis/config/JdbcConfig.java)
+   4. Set [SpringConfig](../spring_mybatis2/src/main/java/mybatis/config/SpringConfig.java) and import above config classes
+   5. Edit [App.java](../spring_mybatis2/src/main/java/mybatis/App.java)
+> Don't combine `MybatisConfig` and `JdbcConfig`, it results circular dependency, which will give an error.
 
 ## 2. AOP & Aspects
 ### 1. Terms
