@@ -81,6 +81,9 @@ rather than the developer, which makes the code easier to maintain.
 - `BeanCreationExcpetion`: Spring is unable to create a bean. Check the no-para constructor of the class.
 
 ### 2. Basic Operation
+#### Mybatis
+1. See a [Mybatis sample](../spring_mybatis), which works without Spring
+2. 
 
 ## 2. AOP & Aspects
 ### 1. Terms
