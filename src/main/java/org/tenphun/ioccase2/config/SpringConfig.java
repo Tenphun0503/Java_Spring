@@ -7,9 +7,11 @@ package org.tenphun.ioccase2.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 
 // if we want to include multiple packages, we can use{p1, p2...}
 @Configuration
 @ComponentScan("org.tenphun.ioccase2")
+@PropertySource("book.properties")
 public class SpringConfig {
 }

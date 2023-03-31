@@ -64,14 +64,19 @@ rather than the developer, which makes the code easier to maintain.
       2. in `<constructor-arg>` set `name` and `ref`
   - Autowire
     1. Provide setter method
-    2. in `<bean>` set `autowire = bytype or byName`
+    2. in `<bean>` set `autowire = byType or byName`
 > Now we can easily set up a bean of a class, even from 3rd-party. E.g. Connecting database. 
-> We can also use a better way: load properties file.
+> We can also use a better way: load properties file, with "${}"
 
 #### Use Annotation to develop
 1. Edit [.xml](../src/main/resources/annotationApplicationContext.xml)
-2. Use [Annotation](../src/main/java/org/tenphun/ioccase2/service/BookServiceImpl.java) to set beans
+2. Use [Annotation](../src/main/java/org/tenphun/ioccase2/dao/BookDaoImpl.java) to set beans
 3. Use [Config](../src/main/java/org/tenphun/ioccase2/config/SpringConfig.java) class to replace xml setting file.
+4. In [dependent class](../src/main/java/org/tenphun/ioccase2/service/BookServiceImpl.java), use `@Autowired` to DI. 
+5. For simple types injection, we use `@Value("value")`. We can also set `@PropertySource` in config class to load properties file
+- > With `@Autowired`, we no longer need setter method.   
+  > If we have multiple implement classes, we use `@Qualifier("name")` to set name.  
+
 #### Some common Exception
 - `NoSuchBeanDefinitionException`: Spring is unable to find a bean definition for a specified bean name or class;
 - `BeanCreationExcpetion`: Spring is unable to create a bean. Check the no-para constructor of the class.
