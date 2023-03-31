@@ -71,6 +71,7 @@ rather than the developer, which makes the code easier to maintain.
 #### Use Annotation to develop
 1. Edit [.xml](../src/main/resources/annotationApplicationContext.xml)
 2. Use [Annotation](../src/main/java/org/tenphun/ioccase2/service/BookServiceImpl.java) to set beans
+3. Use [Config](../src/main/java/org/tenphun/ioccase2/config/SpringConfig.java) class to replace xml setting file.
 #### Some common Exception
 - `NoSuchBeanDefinitionException`: Spring is unable to find a bean definition for a specified bean name or class;
 - `BeanCreationExcpetion`: Spring is unable to create a bean. Check the no-para constructor of the class.
