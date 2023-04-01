@@ -91,6 +91,9 @@ rather than the developer, which makes the code easier to maintain.
    4. Set [SpringConfig](../spring_mybatis2/src/main/java/mybatis/config/SpringConfig.java) and import above config classes
    5. Edit [App.java](../spring_mybatis2/src/main/java/mybatis/App.java)
 > Don't combine `MybatisConfig` and `JdbcConfig`, it results circular dependency, which will give an error.
+#### Junit
+- See how Spring combines [Junit](../spring_junit/src/test/java/mybatis/service/AccountServiceTest.java)
+
 
 ## 2. AOP & Aspects
 ### 1. Terms

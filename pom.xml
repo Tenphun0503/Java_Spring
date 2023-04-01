@@ -11,6 +11,7 @@
     <modules>
         <module>spring_mybatis</module>
         <module>spring_mybatis2</module>
+        <module>spring_junit</module>
     </modules>
 
     <properties>
