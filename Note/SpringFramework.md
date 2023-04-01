@@ -70,7 +70,7 @@ rather than the developer, which makes the code easier to maintain.
 
 #### Use Annotation to develop
 1. Edit [.xml](../spring_02_annotation/src/main/resources/ApplicationContext.xml)
-2. Use [Annotation](../spring_02_annotation/src/main/java/annotation/dao/BookDaoImpl.java) to set beans
+2. Use `@Component` [Annotation](../spring_02_annotation/src/main/java/annotation/dao/BookDaoImpl.java) to set beans
 3. Use [Config](../spring_02_annotation/src/main/java/annotation/config/SpringConfig.java) class to replace xml setting file.
 4. In [dependent class](../spring_02_annotation/src/main/java/annotation/service/BookServiceImpl.java), use `@Autowired` to DI. 
 5. For simple types injection, we use `@Value("value")`. We can also set `@PropertySource` in config class to load properties file
@@ -103,9 +103,9 @@ rather than the developer, which makes the code easier to maintain.
 - **Advice**: Advice is the code that is executed at a join point. In Spring AOP, there are four types of advice: Before, After, AfterReturning, and AfterThrowing.
 - **Aspect**: An aspect is a modular unit of cross-cutting concern that is applied to Spring-managed objects. Aspects are typically defined using annotations or XML configuration.
 ### 2. AOP Basic Operation
-1. Add dependencies
+1. Add [dependencies](../spring_06_aop_quickstart/pom.xml)
 2. Create JoinPoint (The original methods such as Dao interfaces and its implementation)
-3. Create Advice
+3. Create [Advice](../spring_06_aop_quickstart/src/main/java/start/aop/MyAdvice.java)
 4. Create Pointcut
 5. Create Aspect (Binding the relation of the advice and pointcut)
 ### 3. AOP Development
