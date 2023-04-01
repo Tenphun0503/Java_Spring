@@ -12,7 +12,7 @@ import javax.sql.DataSource;
 
 public class MybatisConfig {
     @Bean
-    public SqlSessionFactoryBean sqlSessionFactory(DataSource dataSource) {
+    public SqlSessionFactoryBean SessionFactory(DataSource dataSource) {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setTypeAliasesPackage("mybatis.domain");
         sqlSessionFactoryBean.setDataSource(dataSource);

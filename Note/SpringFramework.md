@@ -120,6 +120,20 @@ A pointcut expression is a predicate that selects one or more join points in a p
   - `+` e.g. `execution(* *..*Service+.*(..))
   // Any methods in subclasses of class which class name end with 'Service'. 
   > return any methods: `@Pointcut("execution(* *..*(..))")`
+#### Different Advice Type
+1. `@Before(pointcut())`
+2. `@After(pointcut())`
+3. `@Around(pointcut())`: **Around Advice** requires clarifying pointcut method, and return any possible value in type of Object:
+    ```
+      public Object Around(ProceedingJoinPoint pjp) throw Throwable{
+          beforeMethod();
+          Object res = pjp.proceed(); //Clarify pointcut, and get return value
+          afterMethod();
+          return res;  // return value;
+      } 
+    ```
+4. `AfterReturning(pointcut())`: execute only if pointcut method is successfully executed
+5. `AfterThrowing(pointcut())`: execute only if pointcut method throws  exception
 ### 3. AOP Development
 
 ## 3. Data Access & Data Integration

@@ -13,7 +13,7 @@ import org.apache.ibatis.annotations.Update;
 import java.util.List;
 
 public interface AccountDao {
-    @Insert("insert into tb_account(name, value) values (#{name}, #{money})")
+    @Insert("insert into tb_account(name, money) values (#{name}, #{money})")
     void save(Account account);
 
     @Delete("delete from tb_account where id= #{id}")
