@@ -103,11 +103,23 @@ rather than the developer, which makes the code easier to maintain.
 - **Advice**: Advice is the code that is executed at a join point. In Spring AOP, there are four types of advice: Before, After, AfterReturning, and AfterThrowing.
 - **Aspect**: An aspect is a modular unit of cross-cutting concern that is applied to Spring-managed objects. Aspects are typically defined using annotations or XML configuration.
 ### 2. AOP Basic Operation
+#### Quick Start
 1. Add [dependencies](../spring_06_aop_quickstart/pom.xml)
 2. Create JoinPoint (The original methods such as Dao interfaces and its implementation)
 3. Create [Advice](../spring_06_aop_quickstart/src/main/java/start/aop/MyAdvice.java)
 4. Create Pointcut
 5. Create Aspect (Binding the relation of the advice and pointcut)
+#### Pointcut Expression  
+A pointcut expression is a predicate that selects one or more join points in a program where an aspect's advice should be applied.  
+- Convention: `actionKeyWord ([accessModifier] return package.class/interface(parameters) [exception])`
+- We can also use wildcard:
+  - `*` e.g. `execution(public * com.example.*.UserService.find* (*))`   
+  // All methods start with 'find', has just one input and return a value, in UserService under any(but one level) of 'com.example' package.
+  - `..` e.g. `execution(public User com..UserService.findById(..))`
+  // findById() methods in UserService with any input and under any of 'com' package
+  - `+` e.g. `execution(* *..*Service+.*(..))
+  // Any methods in subclasses of class which class name end with 'Service'. 
+  > return any methods: `@Pointcut("execution(* *..*(..))")`
 ### 3. AOP Development
 
 ## 3. Data Access & Data Integration

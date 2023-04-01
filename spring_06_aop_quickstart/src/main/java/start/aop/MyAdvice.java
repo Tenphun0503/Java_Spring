@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 public class MyAdvice {
     // 2. Create pointcut method
     // 3. Annotation
-    @Pointcut("execution(void start.dao.BookDao.update())")
+    @Pointcut("execution(* start.dao.*Dao.update(..))")
     public void pc(){}
 
     // 1. Create advice: define method()
