@@ -16,6 +16,7 @@
         <module>spring_02_annotation</module>
         <module>spring_06_aop_quickstart</module>
         <module>spring_07_aop_speed</module>
+        <module>spring_08_case_transfer</module>
     </modules>
 
     <properties>

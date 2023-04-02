@@ -148,6 +148,18 @@ A pointcut expression is a predicate that selects one or more join points in a p
 
 ## 3. Data Access & Data Integration
 ### 1. Transaction
+A transaction is a unit of work that needs to be executed atomically, 
+i.e., all the steps involved in the transaction must be completed successfully, or none of them should be completed at all.  
+#### Case: Transfer Money (Account A -money : Account B +money)
+1. To open transaction, Use `@Transactional`, see in [AccountService](../spring_08_case_transfer/src/main/java/transfer/service/AccountService.java)
+2. Add transaction manager in [config](../spring_08_case_transfer/src/main/java/transfer/config/JdbcConfig.java)
+3. Enable Transaction management in [SpringConfig](../spring_08_case_transfer/src/main/java/transfer/config/SpringConfig.java)
+#### Attribute Setting
+1. readOnly
+2. timeOut
+3. rollbackFor: Spring does not rollback for all Exceptions and Errors, so set here;
+4. Propagation
+#### Case: For Transfer Money Case, add log recording (write log even if transfer doesn't success)
 
 ## 4. Web
 ## 5. Test
