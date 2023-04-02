@@ -14,7 +14,7 @@ import speed.service.impl.AccountServiceImpl;
 public class App {
     public static void main(String[] args) {
         ApplicationContext ctx = new AnnotationConfigApplicationContext(SpringConfig.class);
-        AccountService accountService = ctx.getBean(AccountServiceImpl.class);
+        AccountService accountService = (AccountService) ctx.getBean("accountService");
         Account ac = accountService.findById(1);
         System.out.println(ac);
     }
