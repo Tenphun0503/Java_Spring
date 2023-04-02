@@ -134,7 +134,11 @@ A pointcut expression is a predicate that selects one or more join points in a p
     ```
 4. `AfterReturning(pointcut())`: execute only if pointcut method is successfully executed
 5. `AfterThrowing(pointcut())`: execute only if pointcut method throws  exception
-
+#### Get arguments of pointcut method
+1. in `@Before` and `@After`, use `joinPoint jp.getArgs()`. 
+2. in `@Around`, use `pjp.getArgs()`. Since `@Around` has to use `pjp.proceed()`, one can pre-edit args get from `getArgs()` and pass to `proceed(args)`
+- > It facilitates   some function development, such as check if the input values are valid.
+3. For `@AfterReturning` and `@AfterTrowing`, set parameters after them to get return or exception. e.g.`@AfterReturning(value="pt()", returning="ret")`
 ### 3. AOP Development
 #### Case
 - Requirement: Measure Execute Time of Every Service Interface.
