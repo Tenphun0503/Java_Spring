@@ -134,7 +134,13 @@ A pointcut expression is a predicate that selects one or more join points in a p
     ```
 4. `AfterReturning(pointcut())`: execute only if pointcut method is successfully executed
 5. `AfterThrowing(pointcut())`: execute only if pointcut method throws  exception
+
 ### 3. AOP Development
+#### Case
+- Requirement: Measure Execute Time of Every Service Interface.
+  - Set up [Advice.java](../spring_07_aop_speed/src/main/java/speed/aop/Advice.java)
+> `getSignature()` of `ProceedingJoinPoint pjp` provides information of the pointcut method.   
+> Include className `signature.getDeclaringTypeName()` and methodName `signature.getName()`, can be used to distinguish method.
 
 ## 3. Data Access & Data Integration
 ### 1. Transaction

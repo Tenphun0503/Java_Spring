@@ -13,17 +13,17 @@ import javax.sql.DataSource;
 public class JdbcConfig {
     @Value("${jdbc.url}")
     private String url;
-    @Value("$jdbc.username}")
+    @Value("${jdbc.username}")
     private String username;
-    @Value("$jdbc.password}")
+    @Value("${jdbc.password}")
     private String password;
 
     @Bean
     public DataSource dataSource(){
-        MysqlConnectionPoolDataSource dataSource = new MysqlConnectionPoolDataSource();
-        dataSource.setURL(url);
-        dataSource.setUser(username);
-        dataSource.setPassword((password));
-        return dataSource;
+        MysqlConnectionPoolDataSource mysqlDataSource = new MysqlConnectionPoolDataSource();
+        mysqlDataSource.setURL(url);
+        mysqlDataSource.setUser(username);
+        mysqlDataSource.setPassword((password));
+        return mysqlDataSource;
     }
 }
