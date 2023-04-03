@@ -17,6 +17,7 @@
         <module>spring_06_aop_quickstart</module>
         <module>spring_07_aop_speed</module>
         <module>spring_08_case_transfer</module>
+        <module>spring_09_mvc_demo</module>
     </modules>
 
     <properties>

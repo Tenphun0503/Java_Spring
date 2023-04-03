@@ -161,7 +161,7 @@ i.e., all the steps involved in the transaction must be completed successfully, 
 4. propagation: define transaction behavior.
 #### Case: For Transfer Money Case, add log recording (write log even if transfer doesn't success)
 To separate log function from other transfer function, we have to use propagation. see [LogService](../spring_08_case_transfer/src/main/java/transfer/service/LogService.java)
-## 4. Web
-## 5. Test
+
+
 
  
