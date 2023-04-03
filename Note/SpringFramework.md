@@ -1,5 +1,8 @@
 # Spring Framework
 
+---
+
+
 ## 1. Core Container
 
 ### 1. IoC/DI
@@ -94,7 +97,7 @@ rather than the developer, which makes the code easier to maintain.
 #### Junit
 - See how Spring combines [Junit](../spring_05_junit/src/test/java/mybatis/service/AccountServiceTest.java)
 
-
+---
 ## 2. AOP & Aspects
 ### 1. Terms
 - **AOP (Aspect Oriented Programming)** is a programming paradigm that aims to increase the modularity and maintainability of software systems by separating cross-cutting concerns from the main program logic
@@ -145,7 +148,7 @@ A pointcut expression is a predicate that selects one or more join points in a p
   - Set up [Advice.java](../spring_07_aop_speed/src/main/java/speed/aop/Advice.java)
 > `getSignature()` of `ProceedingJoinPoint pjp` provides information of the pointcut method.   
 > Include className `signature.getDeclaringTypeName()` and methodName `signature.getName()`, can be used to distinguish method.
-
+---
 ## 3. Data Access & Data Integration
 ### 1. Transaction
 A transaction is a unit of work that needs to be executed atomically, 
@@ -162,6 +165,6 @@ i.e., all the steps involved in the transaction must be completed successfully, 
 #### Case: For Transfer Money Case, add log recording (write log even if transfer doesn't success)
 To separate log function from other transfer function, we have to use propagation. see [LogService](../spring_08_case_transfer/src/main/java/transfer/service/LogService.java)
 
-
+Next: [SpringMVC](SpringMVC.md)
 
  
