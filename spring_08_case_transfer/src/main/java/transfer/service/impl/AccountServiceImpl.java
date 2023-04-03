@@ -28,8 +28,11 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public void transfer(String out, String in, Double money) {
-        logService.log(out, in, money);
-        accountDao.outMoney(out, money);
-        accountDao.inMoney(in, money);
+        try{
+            accountDao.outMoney(out, money);
+            accountDao.inMoney(in, money);
+        }finally {
+            logService.log(out, in, money);
+        }
     }
 }
