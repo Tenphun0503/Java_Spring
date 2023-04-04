@@ -11,6 +11,5 @@ import org.springframework.context.annotation.Import;
 // Load controller bean
 @Configuration
 @ComponentScan("demo.springmvc")
-@Import(ServletContainersInitConfig.class)
 public class SpringMvcConfig {
 }

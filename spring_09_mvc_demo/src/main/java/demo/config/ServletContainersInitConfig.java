@@ -8,10 +8,11 @@ package demo.config;
 
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
+import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 import org.springframework.web.servlet.support.AbstractDispatcherServletInitializer;
 
 // Load Spring Servlet setting
-public class ServletContainersInitConfig extends AbstractDispatcherServletInitializer {
+/*public class ServletContainersInitConfig extends AbstractDispatcherServletInitializer {
     // Loading SpringMVC container setting
     @Override
     protected WebApplicationContext createServletApplicationContext() {
@@ -20,15 +21,35 @@ public class ServletContainersInitConfig extends AbstractDispatcherServletInitia
         return ctx;
     }
 
+    // Loading Spring container setting
+    @Override
+    protected WebApplicationContext createRootApplicationContext() {
+        AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
+        ctx.register(SpringConfig.class);
+        return ctx;
+    }
+
     // Setting which request belongs to SpringMVC
     @Override
     protected String[] getServletMappings() {
         return new String[] {"/"};
     }
+}*/
 
-    // Loading Spring container setting
+// Or you can use this way to register servlet setting
+public class ServletContainersInitConfig extends AbstractAnnotationConfigDispatcherServletInitializer{
     @Override
-    protected WebApplicationContext createRootApplicationContext() {
-        return null;
+    protected Class<?>[] getRootConfigClasses() {
+        return new Class[]{SpringConfig.class};
+    }
+
+    @Override
+    protected Class<?>[] getServletConfigClasses() {
+        return new Class[]{SpringMvcConfig.class};
+    }
+
+    @Override
+    protected String[] getServletMappings() {
+        return new String[] {"/"};
     }
 }
