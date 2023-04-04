@@ -5,10 +5,12 @@
  */
 package ssm.service;
 
+import org.springframework.transaction.annotation.Transactional;
 import ssm.domain.Book;
 
 import java.util.List;
 
+@Transactional
 public interface BookService {
     /**
      * Save

@@ -113,9 +113,10 @@ _Uniform Interface:_ The interface between the client and server should be stand
    - Tables and [Domains](../spring_11_ssm/src/main/java/ssm/domain/Book.java) class
    - [DAO](../spring_11_ssm/src/main/java/ssm/dao/BookDao.java)
    - [Service](../spring_11_ssm/src/main/java/ssm/service/BookService.java)
-     - Service Interface Test (Junit)
+     - Service Interface [Test](../spring_11_ssm/src/test/java/ssm/service/BookServiceTest.java) (Junit)
    - [Controller](../spring_11_ssm/src/main/java/ssm/controller/BookController.java)
      - Controller Interface Test (PostMan)
+   - Transaction Management
 #### Presentation Layer Data Encapsulation
 #### Exception Handler
 #### Exception Handle
