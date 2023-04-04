@@ -76,12 +76,23 @@ _Statelessness:_ Each request from the client to the server should contain all t
 The server should not rely on any previous communication from the client.  
 _Uniform Interface:_ The interface between the client and server should be standardized, using HTTP methods such as GET, POST, PUT, and DELETE.
 #### HTTP methods
-`GET`: Inquire
-`POST`: Add/save
-`PUT`: Update
-`DELETE`: Delete
-
-
+`GET`: Inquire  
+`POST`: Add/save  
+`PUT`: Update  
+`DELETE`: Delete  
+#### Sample
+[UserController](../src/main/java/restful/controller/UserController.java)
+`method`; `paht/{var}` + `@PathVariable`
+#### The ways to receive parameters
+`@RequestBody`: parameters in the request body  
+`@RequestParam`: parameters after the request url  
+`@PathVariable`: parameters in the request url
+#### Simplify development
+1. Move `@RequestMapping` to the top of the class
+2. Move `@ResponseBody` to the top of the class
+3. Spring Combined `@ResponseBody` and `@Controller` as `@RestController`
+4. Change `@RequestMapping(method = RequestMethod.POST)` to `@PostMapping`
+5. Change `@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)` to `@DeleteMapping("/{id}")`
 
 ---
 ### 4. SSM

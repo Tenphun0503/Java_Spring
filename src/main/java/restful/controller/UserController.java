@@ -7,36 +7,34 @@ package restful.controller;
 
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import restful.domain.User;
 
 @Controller
 public class UserController {
-    @RequestMapping("/save")
+    @RequestMapping(value = "/users", method = RequestMethod.POST)
     @ResponseBody
     public String save(@RequestBody User user){
         return "module: user save";
     }
-    @RequestMapping("/delete")
+    @RequestMapping(value = "/users/{id}", method = RequestMethod.DELETE)
     @ResponseBody
-    public String delete(Integer id){
+    public String delete(@PathVariable Integer id){
         return "module: user delete";
     }
-    @RequestMapping("/update")
+    @RequestMapping(value = "/users", method = RequestMethod.PUT)
     @ResponseBody
     public String update(@RequestBody User user){
         return "module: user update";
     }
-    @RequestMapping("/getById")
+    @RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public String getById(Integer id){
+    public String getById(@PathVariable Integer id){
         return "module: user getById";
     }
-    @RequestMapping("/getByAll")
+    @RequestMapping(value = "/users", method = RequestMethod.GET)
     @ResponseBody
     public String getByAll(){
-        return "module: user getByAll";
+        return "module: user getAll";
     }
 }
