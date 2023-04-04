@@ -15,6 +15,6 @@ public class BookDaoImpl implements BookDao {
     private String name;
 
     public void save() {
-        System.out.println("book dao save ...: " + name);
+        System.out.println("book ssm.dao save ...: " + name);
     }
 }

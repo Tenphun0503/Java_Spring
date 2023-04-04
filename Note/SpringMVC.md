@@ -6,9 +6,9 @@ It provides a flexible way to develop web applications by separating the concern
 #### Base Steps:
 1. Set Dependencies: [pom.xml](../spring_09_mvc_demo/pom.xml)
 2. Define Controller: [UserController](../spring_09_mvc_demo/src/main/java/demo/springmvc/UserController.java)
-3. Define SpringConfig: [SpringMvcConfig](../spring_09_mvc_demo/src/main/java/demo/config/SpringMvcConfig.java)
-4. Define Servlet Container Init Config: [ServletContainersInitConfig](../spring_09_mvc_demo/src/main/java/demo/config/ServletContainersInitConfig.java)
-5. For Component of Spring, we can exclude scanning bean of SpringMVC: [SpringConfig](../spring_09_mvc_demo/src/main/java/demo/config/SpringConfig.java)
+3. Define SpringConfig: [SpringMvcConfig](../spring_09_mvc_demo/src/main/java/demo/ssm.config/SpringMvcConfig.java)
+4. Define Servlet Container Init Config: [ServletContainersInitConfig](../spring_09_mvc_demo/src/main/java/demo/ssm.config/ServletContainersInitConfig.java)
+5. For Component of Spring, we can exclude scanning bean of SpringMVC: [SpringConfig](../spring_09_mvc_demo/src/main/java/demo/ssm.config/SpringConfig.java)
 #### Server Initializing Steps:
 1. Start Server, execute `ServletContainersInitCofig`, initialize web container
 2. Execute `createdServletApplicationContext`, Create `WebApplicationContext` Object
@@ -59,7 +59,7 @@ public class UserController {
 }
 ```
 #### Garbled processing
-Use Filter: [ServletContainersInitConfig](../spring_10_mvc_request/src/main/java/mvc/config/ServletContainersInitConfig.java)
+Use Filter: [ServletContainersInitConfig](../spring_10_mvc_request/src/main/java/mvc/ssm.config/ServletContainersInitConfig.java)
 #### Respond
 1. return page: just return the name of the page `return page.jsp` (no `RequestBody` needed)
 2. return string: `ResponseBody` + `return "stirng text";`
@@ -81,7 +81,7 @@ _Uniform Interface:_ The interface between the client and server should be stand
 `PUT`: Update  
 `DELETE`: Delete  
 #### Sample
-[UserController](../src/main/java/restful/controller/UserController.java)
+[UserController](../src/main/java/restful/ssm.controller/UserController.java)
 `method`; `paht/{var}` + `@PathVariable`
 #### The ways to receive parameters
 `@RequestBody`: parameters in the request body  
@@ -101,20 +101,20 @@ _Uniform Interface:_ The interface between the client and server should be stand
    - [pom.xml](../spring_11_ssm/pom.xml)
 2. SSM Integration
     - Spring
-      - SpringConfig
+      - [SpringConfig](../spring_11_ssm/src/main/java/ssm/config/SpringConfig.java)
     - Mybatis
-      - MybatisConfig
-      - JdbcConfig
-      - jdbc.properties
+      - [MybatisConfig](../spring_11_ssm/src/main/java/ssm/config/MybatisConfig.java)
+      - [JdbcConfig](../spring_11_ssm/src/main/java/ssm/config/JdbcConfig.java)
+      - [jdbc.properties](../spring_11_ssm/src/main/resources/jdbc.properties)
     - SpringMVC
-      - ServletConfig
-      - SpringMvcConfig
+      - [ServletConfig](../spring_11_ssm/src/main/java/ssm/config/ServletConfig.java)
+      - [SpringMvcConfig](../spring_11_ssm/src/main/java/ssm/config/SpringMvcConfig.java)
 3. Function Module
-   - Tables and Domains class
-   - DAO
-   - Service
+   - Tables and [Domains](../spring_11_ssm/src/main/java/ssm/domain/Book.java) class
+   - [DAO](../spring_11_ssm/src/main/java/ssm/dao/BookDao.java)
+   - [Service](../spring_11_ssm/src/main/java/ssm/service/BookService.java)
      - Service Interface Test (Junit)
-   - Controller
+   - [Controller](../spring_11_ssm/src/main/java/ssm/controller/BookController.java)
      - Controller Interface Test (PostMan)
 #### Presentation Layer Data Encapsulation
 #### Exception Handler

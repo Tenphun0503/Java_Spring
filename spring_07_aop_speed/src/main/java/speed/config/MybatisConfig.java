@@ -15,7 +15,7 @@ public class MybatisConfig {
     @Bean
     public SqlSessionFactoryBean sessionFactoryBean(DataSource dataSource){
         SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
-        sessionFactory.setTypeAliasesPackage("speed.domain");
+        sessionFactory.setTypeAliasesPackage("speed.ssm.domain");
         sessionFactory.setDataSource(dataSource);
         return sessionFactory;
     }
@@ -23,7 +23,7 @@ public class MybatisConfig {
     @Bean
     public MapperScannerConfigurer mapperScannerConfigurer(){
         MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();
-        mapperScannerConfigurer.setBasePackage("speed.dao");
+        mapperScannerConfigurer.setBasePackage("speed.ssm.dao");
         return mapperScannerConfigurer;
     }
 }

@@ -24,7 +24,7 @@ rather than the developer, which makes the code easier to maintain.
 #### Bean
 - Objects that created and controlled in the IoC container are called Bean.
 - `<bean></bean>` is the tag pair to define a bean.
-  e.g. `bean id="bookDao" name = "dao dao1" class="BookDaoImpl"/>`
+  e.g. `bean id="bookDao" name = "ssm.dao dao1" class="BookDaoImpl"/>`
 - `id` sets only identify name for the bean, while `name` sets nicknames for the bean. (Which are used in `getBean()`)
 - `scope` decides whether single instance or multiple instances. e.g. Two objects created by `getBean()` are different if `scope="prototype"`
 - `init-method` and : Call lined method on creation of the bean.
@@ -35,7 +35,7 @@ rather than the developer, which makes the code easier to maintain.
   ```xml
   <bean id="bookDao" class="BookDao"/>
   ```
-  2. Use static factory (See [BookDaoFactory](../spring_01_xml/src/main/java/xml/dao/BookDaoFactory.java))
+  2. Use static factory (See [BookDaoFactory](../spring_01_xml/src/main/java/xml/ssm.dao/BookDaoFactory.java))
   ```xml
   <bean id="bookDao" class="BookDaoFactory" factory-method="getBookDao"/>
   ```
@@ -46,7 +46,7 @@ rather than the developer, which makes the code easier to maintain.
   <bean id="bookDao" factory-method="getBookDao" factory-bean="bookDaoFactory"/>
   </beans>
   ```
-- > For the 3rd type, Spring improved it by setting [FactoryBean](../spring_01_xml/src/main/java/xml/dao/BookDaoFactoryBean.java) so that it can be more generalized.
+- > For the 3rd type, Spring improved it by setting [FactoryBean](../spring_01_xml/src/main/java/xml/ssm.dao/BookDaoFactoryBean.java) so that it can be more generalized.
 #### DI (Dependency Injection)
 - This design pattern allows fot the automatic injection of dependencies into objects.
 - > If one class depends on another one, IoC binds and loads them together.
@@ -73,12 +73,12 @@ rather than the developer, which makes the code easier to maintain.
 
 #### Use Annotation to develop
 1. Edit [.xml](../spring_02_annotation/src/main/resources/ApplicationContext.xml)
-2. Use `@Component` [Annotation](../spring_02_annotation/src/main/java/annotation/dao/BookDaoImpl.java) to set beans
-3. Use [Config](../spring_02_annotation/src/main/java/annotation/config/SpringConfig.java) class to replace xml setting file.
+2. Use `@Component` [Annotation](../spring_02_annotation/src/main/java/annotation/ssm.dao/BookDaoImpl.java) to set beans
+3. Use [Config](../spring_02_annotation/src/main/java/annotation/ssm.config/SpringConfig.java) class to replace xml setting file.
 4. In [dependent class](../spring_02_annotation/src/main/java/annotation/service/BookServiceImpl.java), use `@Autowired` to DI. 
-5. For simple types injection, we use `@Value("value")`. We can also set `@PropertySource` in config class to load properties file
+5. For simple types injection, we use `@Value("value")`. We can also set `@PropertySource` in ssm.config class to load properties file
 - > With `@Autowired`, we no longer need setter method. If we have multiple implement classes, we use `@Qualifier("name")` to set name.  
-- > With `@Import` in SpringConfig, we can load other config class.
+- > With `@Import` in SpringConfig, we can load other ssm.config class.
 #### Some common Exception
 - `NoSuchBeanDefinitionException`: Spring is unable to find a bean definition for a specified bean name or class;
 - `BeanCreationExcpetion`: Spring is unable to create a bean. Check the no-para constructor of the class.
@@ -88,10 +88,10 @@ rather than the developer, which makes the code easier to maintain.
 1. See a [Mybatis sample](../spring_03_mybatis), which works without Spring
 2. Now we combine myBatis and Spring together
    1. Add relevant [dependencies](../spring_04_mybatis2/pom.xml)
-   2. Convert SqlMapConfig.xml to config class: [MybatisConfig](../spring_04_mybatis2/src/main/java/mybatis/config/MybatisConfig.java),
+   2. Convert SqlMapConfig.xml to ssm.config class: [MybatisConfig](../spring_04_mybatis2/src/main/java/mybatis/ssm.config/MybatisConfig.java),
    Set `typeAliases`, `dataSource` and `mapper` 
-   3. For `dataSource`, set [JdbcConfig](../spring_04_mybatis2/src/main/java/mybatis/config/JdbcConfig.java)
-   4. Set [SpringConfig](../spring_04_mybatis2/src/main/java/mybatis/config/SpringConfig.java) and import above config classes
+   3. For `dataSource`, set [JdbcConfig](../spring_04_mybatis2/src/main/java/mybatis/ssm.config/JdbcConfig.java)
+   4. Set [SpringConfig](../spring_04_mybatis2/src/main/java/mybatis/ssm.config/SpringConfig.java) and import above ssm.config classes
    5. Edit [App.java](../spring_04_mybatis2/src/main/java/mybatis/App.java)
 > Don't combine `MybatisConfig` and `JdbcConfig`, it results circular dependency, which will give an error.
 #### Junit
@@ -155,8 +155,8 @@ A transaction is a unit of work that needs to be executed atomically,
 i.e., all the steps involved in the transaction must be completed successfully, or none of them should be completed at all.  
 #### Case: Transfer Money (Account A -money : Account B +money)
 1. To open transaction, Use `@Transactional`, see in [AccountService](../spring_08_case_transfer/src/main/java/transfer/service/AccountService.java)
-2. Add transaction manager in [config](../spring_08_case_transfer/src/main/java/transfer/config/JdbcConfig.java)
-3. Enable Transaction management in [SpringConfig](../spring_08_case_transfer/src/main/java/transfer/config/SpringConfig.java)
+2. Add transaction manager in [ssm.config](../spring_08_case_transfer/src/main/java/transfer/ssm.config/JdbcConfig.java)
+3. Enable Transaction management in [SpringConfig](../spring_08_case_transfer/src/main/java/transfer/ssm.config/SpringConfig.java)
 #### Attribute Setting
 1. readOnly
 2. timeOut

@@ -4,11 +4,11 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- 1. Set up Beans-->
-    <bean id="bookDao" class="xml.dao.BookDaoImpl"/>
+    <bean id="bookDao" class="xml.ssm.dao.BookDaoImpl"/>
     <bean id="bookService" class="xml.service.BookServiceImpl">
         <!-- 6. Set the relation between Dao and Service-->
         <property name="bookDao" ref="bookDao"/>
     </bean>
 
-    <bean id="bookDaoByFactory" class="xml.dao.BookDaoFactoryBean"/>
+    <bean id="bookDaoByFactory" class="xml.ssm.dao.BookDaoFactoryBean"/>
 </beans>

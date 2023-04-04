@@ -7,6 +7,6 @@ package xml.dao;
 
 public class BookDaoImpl implements BookDao{
     public void save() {
-        System.out.println("book dao save ...");
+        System.out.println("book ssm.dao save ...");
     }
 }

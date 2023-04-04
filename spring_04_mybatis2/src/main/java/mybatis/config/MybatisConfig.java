@@ -14,7 +14,7 @@ public class MybatisConfig {
     @Bean
     public SqlSessionFactoryBean SessionFactory(DataSource dataSource) {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
-        sqlSessionFactoryBean.setTypeAliasesPackage("mybatis.domain");
+        sqlSessionFactoryBean.setTypeAliasesPackage("mybatis.ssm.domain");
         sqlSessionFactoryBean.setDataSource(dataSource);
         return sqlSessionFactoryBean;
     }
@@ -22,7 +22,7 @@ public class MybatisConfig {
     @Bean
     public MapperScannerConfigurer mapperScannerConfigurer(){
         MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();
-        mapperScannerConfigurer.setBasePackage("mybatis.dao");
+        mapperScannerConfigurer.setBasePackage("mybatis.ssm.dao");
         return mapperScannerConfigurer;
     }
 }

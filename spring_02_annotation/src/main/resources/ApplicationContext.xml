@@ -9,7 +9,7 @@
                http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!--We don't need load every bean manually-->
-    <!--<bean id="bookDao" class="org.tenphun.annotation.dao.BookDaoImpl"/>-->
+    <!--<bean id="bookDao" class="org.tenphun.annotation.ssm.dao.BookDaoImpl"/>-->
     <context:component-scan base-package="annotation"/>
 
 </beans>
