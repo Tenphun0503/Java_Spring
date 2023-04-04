@@ -96,6 +96,30 @@ _Uniform Interface:_ The interface between the client and server should be stand
 
 ---
 ### 4. SSM
+#### SSM
+1. Create the project
+   - [pom.xml](../spring_11_ssm/pom.xml)
+2. SSM Integration
+    - Spring
+      - SpringConfig
+    - Mybatis
+      - MybatisConfig
+      - JdbcConfig
+      - jdbc.properties
+    - SpringMVC
+      - ServletConfig
+      - SpringMvcConfig
+3. Function Module
+   - Tables and Domains class
+   - DAO
+   - Service
+     - Service Interface Test (Junit)
+   - Controller
+     - Controller Interface Test (PostMan)
+#### Presentation Layer Data Encapsulation
+#### Exception Handler
+#### Exception Handle
+
 
 ---
 ### 5. Interceptor

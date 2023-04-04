@@ -19,6 +19,7 @@
         <module>spring_08_case_transfer</module>
         <module>spring_09_mvc_demo</module>
         <module>spring_10_mvc_request</module>
+        <module>spring_11_ssm</module>
     </modules>
 
     <properties>
