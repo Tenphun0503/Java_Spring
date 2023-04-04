@@ -91,6 +91,30 @@
 <dependency>
     <groupId>org.springframework</groupId>
     <artifactId>spring-webmvc</artifactId>
-    <version>6.0.4</version>
+    <version>6.0.6</version>
+</dependency>
+```
+---
+### Server
+#### Tomcat
+```xml
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.tomcat.maven</groupId>
+            <artifactId>tomcat7-maven-plugin</artifactId>
+            <version>2.2</version>
+        </plugin>
+    </plugins>
+</build>
+```
+---
+### Json
+#### Jackson
+```xml
+<dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-databind</artifactId>
+    <version>2.14.2</version>
 </dependency>
 ```

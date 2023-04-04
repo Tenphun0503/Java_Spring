@@ -18,6 +18,7 @@
         <module>spring_07_aop_speed</module>
         <module>spring_08_case_transfer</module>
         <module>spring_09_mvc_demo</module>
+        <module>spring_10_mvc_request</module>
     </modules>
 
     <properties>
@@ -37,6 +38,17 @@
             <artifactId>junit</artifactId>
             <version>4.13.2</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>6.0.6</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
