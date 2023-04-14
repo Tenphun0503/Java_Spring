@@ -118,7 +118,24 @@ _Uniform Interface:_ The interface between the client and server should be stand
      - Controller Interface Test (PostMan)
    - Transaction Management
 #### Presentation Layer Data Encapsulation
+Since we for different request, we returned different type of result back, which increase front-end workload.
+In work, we usually use a self-defined result class to encapsulate all the data. e.g.
+```java
+public class Result {
+    private Object data;    // record the result e,g true/false for adding, deleting, updating
+    private Integer code;   // record type of request
+    private String msg;     // record msg for failed request. e.g. getting request returns null
+}
+```
 #### Exception Handler
+- Different Exception reason
+  - Exception from framework
+  - Exception from data layer
+  - Exception from service layer
+  - Exception from presentation layer
+  - Exception from tool class
+- Let all exceptions throw up to presentation layer and handle them in there.
+- Since there are too many kinds of exceptions, so we better use handle them through AOP principle
 #### Exception Handle
 
 
