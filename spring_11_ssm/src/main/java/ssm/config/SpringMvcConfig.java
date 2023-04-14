@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
-@ComponentScan("ssm.controller")
+@ComponentScan({"ssm.controller", "ssm.config"})
 @EnableWebMvc
 public class SpringMvcConfig {
 

@@ -1,0 +1,23 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td, th {
+    padding: 0.5em;
+    border: 1px solid black;
+}
+
+#bookTable th:first-child, #bookTable td:first-child {
+    width: 1fr; /* 1/6th of the available space */
+}
+
+#bookTable th:nth-child(2), #bookTable td:nth-child(2),
+#bookTable th:nth-child(3), #bookTable td:nth-child(3),
+#bookTable th:nth-child(4), #bookTable td:nth-child(4) {
+    width: 2fr; /* 2/6th of the available space */
+}
+
+#bookTable th:last-child, #bookTable td:last-child {
+    width: 1fr; /* 1/6th of the available space */
+}

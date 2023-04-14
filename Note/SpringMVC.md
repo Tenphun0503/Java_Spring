@@ -127,17 +127,61 @@ public class Result {
     private String msg;     // record msg for failed request. e.g. getting request returns null
 }
 ```
+- Define [Result](../spring_11_ssm/src/main/java/ssm/controller/Result.java) Class
+- Define [Code](../spring_11_ssm/src/main/java/ssm/controller/Code.java)
+- Update [BookController](../spring_11_ssm/src/main/java/ssm/controller/BookController.java)
 #### Exception Handler
-- Different Exception reason
+- Different places can occur Exception
   - Exception from framework
   - Exception from data layer
   - Exception from service layer
   - Exception from presentation layer
   - Exception from tool class
-- Let all exceptions throw up to presentation layer and handle them in there.
+- We can let all exceptions throw up to presentation layer and handle them in there.
 - Since there are too many kinds of exceptions, so we better use handle them through AOP principle
+- Spring MVC provides an exception handler that can be used to handle exceptions centrally and uniformly
+- e.g. [ExceptionAdvice Class](../spring_11_ssm/src/main/java/ssm/controller/ProjectExceptionAdvice.java)
 #### Exception Handle
-
-
+- After intercept the exception, we have to handel it
+- Different type of exceptions
+  - BusinessException
+    - Exceptions caused by normative user behavior 
+    - Exceptions caused by irregular user behavior
+  - SystemException
+    - Unavoidable exceptions during the running of the program
+  - Exception
+    - Unexpected exceptions
+- Basic Solution
+  - BusinessException
+    - Send corresponding message to user to let them operate normally
+  - SystemException
+    - Send predefined message to user to appease them 
+    - Send predefined message to maintainer
+    - record log
+  - Exception
+    - Send predefined message to user to appease them
+    - Send predefined message to maintainer and record the exception
+    - record log
+- Steps
+  1. Define Exception Class. e.g. [BusinessException](../spring_11_ssm/src/main/java/ssm/exception/BusinessException.java)
+  2. In Code.class, define ERR code
+  3. Warp possible exceptions to defined exception
+     - Use try..catch. e.g.
+     ```
+        try{ 
+            int i = 1/0;
+        } catch (Exception e) {
+            throw new SystemException(Code.SYS_ERR, "Server access timeout", e);
+        }
+     ```
+     - or some logical exception e.g. 
+     ```
+       @Override
+       public Book getById(Integer id) {
+           if(id<=0) throw new BusinessException(Code.BUS_ERR, "Invalid value");
+           return bookDao.getById(id);
+       }
+     ```
+  4. Write handle method in [ExceptionAdvice](../spring_11_ssm/src/main/java/ssm/controller/ProjectExceptionAdvice.java)
 ---
 ### 5. Interceptor

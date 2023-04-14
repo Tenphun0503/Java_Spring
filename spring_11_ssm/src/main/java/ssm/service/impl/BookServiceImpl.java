@@ -7,8 +7,10 @@ package ssm.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ssm.controller.Code;
 import ssm.dao.BookDao;
 import ssm.domain.Book;
+import ssm.exception.BusinessException;
 import ssm.service.BookService;
 
 import java.util.List;
@@ -38,6 +40,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Book getById(Integer id) {
+        if(id<=0) throw new BusinessException(Code.BUS_ERR, "Invalid value");
         return bookDao.getById(id);
     }
 
