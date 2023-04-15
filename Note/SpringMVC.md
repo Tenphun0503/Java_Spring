@@ -183,5 +183,9 @@ public class Result {
        }
      ```
   4. Write handle method in [ExceptionAdvice](../spring_11_ssm/src/main/java/ssm/controller/ProjectExceptionAdvice.java)
+#### Front-end and Back-end transaction
+- use axios request in front end e.g [books.html](../spring_11_ssm/src/main/webapp/pages/books.html)
+- Edit relevant functions
+
 ---
 ### 5. Interceptor
