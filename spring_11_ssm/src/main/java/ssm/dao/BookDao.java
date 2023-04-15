@@ -16,7 +16,7 @@ import java.util.List;
 
 @Repository
 public interface BookDao {
-    @Insert("insert into tb_book values(null, #{type}, #{name}, #{description}")
+    @Insert("insert into tb_book(type,name,description) values(#{type}, #{name}, #{description})")
     public void save(Book book);
     @Update("update tb_book set type=#{type}, name=#{name}, description=#{description} where id=#{id}")
     public void update(Book book);
