@@ -21,6 +21,7 @@
         <module>spring_10_mvc_request</module>
         <module>spring_11_ssm</module>
         <module>spring_12_interceptor</module>
+        <module>spring_13_boot_demo</module>
     </modules>
 
     <properties>
