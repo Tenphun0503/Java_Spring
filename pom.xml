@@ -20,6 +20,7 @@
         <module>spring_09_mvc_demo</module>
         <module>spring_10_mvc_request</module>
         <module>spring_11_ssm</module>
+        <module>spring_12_interceptor</module>
     </modules>
 
     <properties>
