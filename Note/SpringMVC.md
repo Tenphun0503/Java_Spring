@@ -189,3 +189,34 @@ public class Result {
 
 ---
 ### 5. Interceptor
+- now we have tomcat deployed our program and all `/*` request will be dispatched by setting by tomcat
+- we are dealing with the dynamic pages. The request go through like follow:
+  - filters -> Spring -> Central Controller -> each controller
+- now we want to add interceptor before and after each controller
+- so that we can execute some predefined code (authority check)
+#### Difference between filter and interceptor
+- filter belongs to Servlet. Interceptor belongs to SpringMVC
+- filter boost all access, interceptor only inspect SpringMVC access
+#### Steps
+- By adding a [ProjectInterceptor.java](../spring_12_interceptor/src/main/java/inter/controller/interceptor/ProjectInterceptor.java) that extends from HandlerInterceptor
+  - We can override the three method to control pre, post and afterCompletion
+  - Remember to scan and load bean
+- In the [SpringMvcSupport.java](../spring_12_interceptor/src/main/java/inter/config/SpringMvcSupport.java) define the path.
+  - This should be a configuration class, and have to be added into component scan list.
+  - override `addInterceptor()` method to put the path want to be intercepted
+- We can also define `addInterceptor()` inside the SpringMvcConfig by implementing it from `WebMvcConfigurer`
+- Now the steps go like
+  - -> preHandle -> return true -> controller -> postHandle -> afterCompletion ->
+#### Parameters
+- request
+- response
+- handler: contained the method that we called
+- modelAndView
+- ex
+#### Multiple Interceptor
+if we have interceptor i1 and i2, if all return true at preHandle, the flow will be like
+- -> i1.pre -> return true -> i2.pre -> return true -> controller -> i2.post -> i1.post -> i2.after -> i1.after
+
+if i2 return false at preHandle, the flow will be like
+- -> i1.pre -> return true -> i2.pre -> return false -> i1.after
+- controller and post and i2.after won't be executed
